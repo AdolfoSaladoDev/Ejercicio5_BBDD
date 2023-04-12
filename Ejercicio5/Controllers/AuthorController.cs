@@ -1,5 +1,6 @@
 ﻿using Ejercicio5.Models;
 using Ejercicio5.Interfaces;
+using Ejercicio5.DataBase;
 
 namespace Ejercicio5.Controllers
 {
@@ -7,28 +8,54 @@ namespace Ejercicio5.Controllers
     {
         public Author AddAuthor(string name)
         {
-            throw new NotImplementedException();
+            Author newAuthor = new(name);
+            Session.AuthorsSession.Add(newAuthor);
+
+            return newAuthor;
         }
 
         public List<Author> GetAllAuthors()
         {
-            throw new NotImplementedException();
+            return Session.AuthorsSession;
         }
 
         public Author GetAuthorByName(string name)
         {
-            throw new NotImplementedException();
+            List<Author> authors = Session.AuthorsSession;
+
+            foreach (Author author in authors)
+            {
+                if (author.AuthorName.Equals(name))
+                {
+                    return author;
+                }
+            }
+            return null;
         }
 
-        public Author GetPublisherById(int id)
+        public Author GetAuthorById(int id)
         {
-            throw new NotImplementedException();
+            List<Author> authors = Session.AuthorsSession;
+
+            foreach (Author author in authors)
+            {
+                if (author.AuthorId.Equals(id))
+                {
+                    return author;
+                }
+            }
+            return null;
         }
 
         public Author ModifyAuthorName(string oldName, string newName)
         {
-            throw new NotImplementedException();
+            Author author = GetAuthorByName(oldName);
+
+            author.AuthorName = newName;
+
+            return author;
         }
+
 
         public bool RemoveAuthorByName(string name)
         {

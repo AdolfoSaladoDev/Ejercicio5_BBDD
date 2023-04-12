@@ -10,7 +10,7 @@ namespace Ejercicio5
             Publisher firstPublisher = new("Editorial Uno");
 
             Book firstBook = new("Primer Libro", firstAuthor, firstPublisher);
-            firstAuthor.PublishedBooks.Add(firstBook);
+            firstAuthor.BooksWritten.Add(firstBook);
             firstPublisher.PublishedBooks.Add(firstBook);
 
             Console.WriteLine($"{firstBook.BookId} - {firstBook.BookName}");

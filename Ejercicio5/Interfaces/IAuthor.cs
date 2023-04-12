@@ -7,7 +7,7 @@ namespace Ejercicio5.Interfaces
         public Author AddAuthor(string name);
         public bool RemoveAuthorByName(string name);
         public Author ModifyAuthorName(string oldName, string newName);
-        public Author GetPublisherById(int id);
+        public Author GetAuthorById(int id);
         public Author GetAuthorByName(string name);
         public List<Author> GetAllAuthors();
     }

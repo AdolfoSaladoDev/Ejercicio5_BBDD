@@ -17,6 +17,6 @@
 
         public string AuthorName { get => authorName; set => authorName = value; }
 
-        public List<Book> PublishedBooks { get => booksWritten; set => booksWritten = value; }
+        public List<Book> BooksWritten { get => booksWritten; set => booksWritten = value; }
     }
 }

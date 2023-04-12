@@ -1,9 +1,15 @@
-﻿
+﻿using Ejercicio5.Models;
 
 namespace Ejercicio5.DataBase
 {
-    internal class DataBase
+    class DataBase
     {
+        public static void MainGenerator()
+        {
+            List<Book> bookList = RandomBooksGenerator();
+            Session.BookSession.AddRange(bookList);
+
+        }
 
         private static string RandomAuthorNameGenerator()
         {
@@ -40,7 +46,90 @@ namespace Ejercicio5.DataBase
             return $"{randomName} {randomAdjective}";
         }
 
-    }
+        public static List<Author> RandomAuthorsGenerator()
+        {
+            int lenghtOfList = 20;
+            List<Author> authorList = new();
 
+            for (int i = 0; i < lenghtOfList; i++)
+            {
+                string name = RandomAuthorNameGenerator();
+
+                Author author = new(name);
+
+                if (!authorList.Contains(author))
+                {
+                    authorList.Add(author);
+
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            return authorList;
+        }
+
+        public static List<Publisher> RandomPublishersGenerator()
+        {
+            int lenghtOfList = 10;
+            List<Publisher> publishersList = new();
+
+            for (int i = 0; i < lenghtOfList; i++)
+            {
+                string name = RandomPublisherNameGenerator();
+
+                Publisher publisher = new(name);
+
+                if (!publishersList.Contains(publisher))
+                {
+                    publishersList.Add(publisher);
+
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            return publishersList;
+        }
+
+        public static List<Book> RandomBooksGenerator()
+        {
+            int lenghtOfList = 5;
+            List<Book> bookList = new();
+            List<Author> authorsList = RandomAuthorsGenerator();
+            List<Publisher> publisherList = RandomPublishersGenerator();
+
+            Session.PublisherSession.AddRange(publisherList);
+            Session.AuthorsSession.AddRange(authorsList);
+
+            for (int i = 0; i < lenghtOfList; i++)
+            {
+                string nameOfBook = RandomPublisherNameGenerator();
+                Author author = authorsList[new Random().Next(authorsList.Count)];
+                Publisher publisher = publisherList[new Random().Next(publisherList.Count)];
+
+
+                Book book = new(nameOfBook, author, publisher);
+                author.BooksWritten.Add(book);
+                publisher.PublishedBooks.Add(book);
+
+                if (!bookList.Contains(book))
+                {
+                    bookList.Add(book);
+
+                }
+                else
+                {
+                    i--;
+                }
+            }
+
+            return bookList;
+        }
+    }
 
 }
