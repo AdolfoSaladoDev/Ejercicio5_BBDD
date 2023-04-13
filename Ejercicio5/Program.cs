@@ -38,6 +38,7 @@ namespace Ejercicio5
                     break;
                 case "4":
                     AddNewPublisher();
+                    LogicMainMenu();
                     break;
                 case "0":
                     PrintExitInformation();
@@ -200,7 +201,7 @@ namespace Ejercicio5
             Publisher newPublisher = new(nameOfNewPublisher);
 
             List<Publisher> listOfPublishers = publisherManager.GetAllPublishers();
-            
+
             while (!isCorrect)
             {
                 if (!listOfPublishers.Contains(newPublisher))
@@ -211,8 +212,9 @@ namespace Ejercicio5
                     Console.WriteLine("Editorial añadida con éxito.");
                     Console.WriteLine($"Nombre de la editorial añadida: {newPublisher.PublisherName}");
 
-                    isCorrect= true;
-                } else
+                    isCorrect = true;
+                }
+                else
                 {
                     Console.Clear();
                     Console.WriteLine("Ya existe una editorial con ese nombre.");
@@ -221,7 +223,8 @@ namespace Ejercicio5
                     AddNewPublisher();
                 }
             }
-           
+            Console.WriteLine("\nPulsa una tecla para volver al menú principal.");
+            Console.ReadKey();
         }
     }
 }
