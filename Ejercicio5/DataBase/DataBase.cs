@@ -125,7 +125,7 @@ namespace Ejercicio5.DataBase
         /// <returns>Listado de libros.</returns>
         public static List<Book> RandomBooksGenerator()
         {
-            int lenghtOfList = 5;
+            int lenghtOfList = 50;
             List<Book> bookList = new();
             List<Author> authorsList = RandomAuthorsGenerator();
             List<Publisher> publisherList = RandomPublishersGenerator();

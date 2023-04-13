@@ -4,12 +4,11 @@ using Ejercicio5.DataBase;
 
 namespace Ejercicio5.Controllers
 {
-    internal class PublisherController : IPublisher
+    class PublisherController : IPublisher
     {
-
-        public Publisher AddPublisher(string name)
+        public Publisher AddPublisher(Publisher publisher)
         {
-            Publisher newPublisher = new(name);
+            Publisher newPublisher = new(publisher.PublisherName);
             Session.PublisherSession.Add(newPublisher);
 
             return newPublisher;

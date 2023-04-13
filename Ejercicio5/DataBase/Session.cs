@@ -2,7 +2,7 @@
 
 namespace Ejercicio5.DataBase
 {
-    internal class Session
+    class Session
     {
         private static List<Author> authorsSession = new();
         private static List<Publisher> publishersSession = new();
