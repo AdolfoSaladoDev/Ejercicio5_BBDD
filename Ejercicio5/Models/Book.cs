@@ -16,7 +16,12 @@
         }
 
         public int BookId { get => bookId; }
-        public string BookName { get => bookName; }
+
+        public string BookName
+        {
+            get => bookName;
+            set => BookName = value;
+        }
         public Author Author { get => author; }
         public Publisher Publisher { get => publisher; }
     }
